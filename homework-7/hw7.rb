@@ -369,8 +369,7 @@ class Let < GeometryExpression
   end
 
   def eval_prog env
-    env_copy = env
-    @e2.eval_prog(env_copy.unshift([@s, @e1.eval_prog(env)]))
+    @e2.eval_prog([[@s, @e1.eval_prog(env)]] + env)
   end
 end
 
